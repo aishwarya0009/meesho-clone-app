@@ -84,14 +84,14 @@ const SignUp = () => {
             { error.length !== 0 && 
                 error.map(e => <Alert key={e} severity="error">{e}</Alert>)
             }
-          <TextField fullWidth label="First Name" type={'text'} onChange={(e)=>setUserInput({...userInput, fname:e.target.value})} />
-          <TextField fullWidth label="Last Name" type={'text'} onChange={(e)=>setUserInput({...userInput, lname:e.target.value})} />
-          <TextField fullWidth label="Email" onChange={(e)=>{setUserInput({...userInput, email:e.target.value}); setError([]) }} />
-          <TextField fullWidth label="Password" type={'password'}  onChange={(e)=>{setUserInput({...userInput, password:e.target.value}); setError([])}}  />
-          <SignUpButton variant='contained' type='submit'>SIGN UP</SignUpButton>
+          <TextField fullWidth label="First Name" type={'text'} onChange={(e)=>setUserInput({...userInput, fname:e.target.value})} sx={{ width: '50%',margin:"auto" }} />
+          <TextField fullWidth label="Last Name" type={'text'} onChange={(e)=>setUserInput({...userInput, lname:e.target.value})} sx={{ width: '50%',margin:"auto" }}  />
+          <TextField fullWidth label="Email" onChange={(e)=>{setUserInput({...userInput, email:e.target.value}); setError([]) }} sx={{ width: '50%',margin:"auto" }}  />
+          <TextField fullWidth label="Password" type={'password'}  onChange={(e)=>{setUserInput({...userInput, password:e.target.value}); setError([])}} sx={{ width: '50%',margin:"auto" }}  />
+          <SignUpButton variant='contained' type='submit' sx={{ width: '30%',margin:"auto" }} >SIGN UP</SignUpButton>
         
       </Form>
-      <Typography variant='body1'>All ready have an Account <Link to={'/login'}>Sign In</Link></Typography>
+      <Typography variant='body1'sx={{ width: '50%',margin:"auto",textAlign:"center" }} >All ready have an Account <Link to={'/login'}>Sign In</Link></Typography>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity={STATUS} sx={{ width: '100%' }}>
           Login {STATUS=="success"?"success":"failed"}

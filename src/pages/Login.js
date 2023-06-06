@@ -77,7 +77,7 @@ export default function Login() {
       <Typography
         variant="h4"
         color={THEME_COLOR}
-        sx={{ display: "grid", placeItems: "center" }}
+        sx={{ display: "grid", placeItems: "center",width:"50%",margin:"auto" }}
       >
         LOGIN
       </Typography>
@@ -103,6 +103,7 @@ export default function Login() {
           name="email"
           inputRef={emailRef}
           onChange={() => setError([])}
+          sx={{ width: '50%',margin:"auto" }} 
         />
         <TextField
           fullWidth
@@ -112,12 +113,13 @@ export default function Login() {
           name="password"
           inputRef={passwordRef}
           onChange={() => setError([])}
+          sx={{ width: '50%',margin:"auto" }} 
         />
-        <LoginButton variant="contained" type="submit">
+        <LoginButton variant="contained" type="submit" sx={{ width: '30%',margin:"auto" }} >
           Login
         </LoginButton>
       </Form>
-      <Typography variant="body1">
+      <Typography variant="body1" sx={{ width: '50%',margin:"auto",textAlign:"center" }} >
         Create an Account <Link to={"/signup"}>Sign Up</Link>
       </Typography>
       {isLoading && <div className="loader"></div>}

@@ -238,7 +238,19 @@ const productsArr = [
     "rate": 3.6,
     "count": 145
     }
-    }
+    },
+    {
+        "id": 21,
+        "title": "Casual Shoes AKR-1100-TAN",
+        "price": 396,
+        "description": "latest stylish branded roman sandals for men tan sandals gucchi sandals floter for men",
+        "category": "Men's Footwear",
+        "image": "https://images.meesho.com/images/products/58930327/pxwp2_400.webp",
+        "rating": {
+        "rate": 3.9,
+        "count": 145
+        }
+        }
 ]
 
 export default productsArr;

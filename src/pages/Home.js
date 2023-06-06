@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "./../services/redux/productSlice";
 import AllProduct from "../components/AllProduct";
 import Filter from "../components/Filter";
+import { Banner } from "../components/Banner";
 import Footer from "./../components/Footer";
 import axios from "axios";
 
@@ -32,10 +33,12 @@ const Home = () => {
 
   return (
     <React.Fragment>
+      <Banner/>
       <Grid container>
         <Grid item sm={3} md={3}>
           <Filter />
         </Grid>
+        
         <Grid item xs={12} sm={9} md={9}>
           <AllProduct />
         </Grid>

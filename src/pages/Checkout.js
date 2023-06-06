@@ -32,9 +32,10 @@ const Address = ({activeStep, setActiveStep, formData, setFormData}) => {
   }
   return (
     <Box padding={1} display="flex" flexDirection={'column'} rowGap="20px">
-      <Typography variant='h4'>{steps[activeStep]} </Typography>
-      <TextField placeholder='Enter Addresss' value={formData.address} onChange={addressChangeHandler}  required />
-      <Button  variant='contained' onClick={confirmAddress} sx={{backgroundColor:THEME_COLOR}}>Deliver to this Address</Button>
+      <Typography variant='h4' sx={{margin:"auto"}}>{steps[activeStep]} </Typography>
+      <TextField placeholder='Enter Addresss' value={formData.address} onChange={addressChangeHandler}  required sx={{ width: '50%',margin:"auto" }} 
+      />
+      <Button  variant='contained' onClick={confirmAddress} sx={{backgroundColor:THEME_COLOR, width: '50%', margin:"auto"}}>Deliver to this Address</Button>
     </Box>
   )
 }
@@ -51,21 +52,21 @@ const Payment = ({activeStep, setActiveStep, formData, setFormData}) => {
 
   return (
     <Box padding={1} display="flex" flexDirection={'column'} rowGap="20px">
-      <Typography variant='h4'>{steps[activeStep]}</Typography>
+      <Typography variant='h4'sx={{ width: '50%',margin:"auto" }} >{steps[activeStep]}</Typography>
       <FormControl>
-        <InputLabel id="paymentLabel">Select Payment</InputLabel>
+        <InputLabel id="paymentLabel" sx={{width:"60%",textAlign:"center"}} >Select Payment</InputLabel>
         <Select
           labelId="paymentLabel"
           value={formData.payment}
           label="Select Payment"
           onChange={(e)=>setFormData({...formData, payment:e.target.value})}
-          required
+          required sx={{ width: '50%',margin:"auto" }} 
         >
-          <MenuItem value='Cash on Delivery'>Cash On Delivery</MenuItem>
+          <MenuItem value='Cash on Delivery' sx={{ width: '50%',margin:"auto" }} >Cash On Delivery</MenuItem>
         </Select>
       </FormControl>
       
-      <Button variant='contained' onClick={confirmPayment} sx={{backgroundColor:THEME_COLOR}}>Continue</Button>
+      <Button variant='contained' onClick={confirmPayment} sx={{backgroundColor:THEME_COLOR,width:"50%",margin:"auto"}}>Continue</Button>
     </Box>
   )
 }

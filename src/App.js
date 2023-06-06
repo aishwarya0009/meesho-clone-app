@@ -12,6 +12,7 @@ import Checkout from './pages/Checkout'
 import SignUp from './pages/SignUp';
 import ProtectedRoute from './components/ProtectedRoute';
 import Main from './pages/Main';
+import Cart from './pages/cart';
 
 export const THEME_COLOR = "rgb(244,51,151)"
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path:"product/:id",
         element: <Product />,
+      },
+      {
+        path:"cart",
+        element:<Cart />
       },
       {
         path:"login",

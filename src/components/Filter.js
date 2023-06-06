@@ -36,26 +36,69 @@ const Filter = () => {
     },[])
 
     const sortByHandle = (e) => {
-        setSelectedCategories([])
-        setSortBy(e.target.value)
-        const data = [...allProducts]
-        switch(e.target.value){
-            case '0': data.sort((a,b) => Number(a.price)>Number(b.price)?1:-1);break;
-            case '1' : data.sort((a,b) => Number(a.price)<Number(b.price)?1:-1);break;
-            case '2': data.sort((a,b) => Number(a.rating.rate)<Number(b.rating.rate)?1:-1);break;
+        // setSelectedCategories([])
+        // setSortBy(e.target.value)
+        // const data = [...allProducts]
+        // switch(e.target.value){
+        //     case '0': data.sort((a,b) => Number(a.price)>Number(b.price)?1:-1);break;
+        //     case '1' : data.sort((a,b) => Number(a.price)<Number(b.price)?1:-1);break;
+        //     case '2': data.sort((a,b) => Number(a.rating.rate)<Number(b.rating.rate)?1:-1);break;
+        // }
+        // dispatch(setFilteredProducts(data));
+        setSortBy(e.target.value);
+        const data = [...allProducts];
+      
+        // filter by selected categories
+        let filteredData = data;
+        if (selectedCategories.length > 0) {
+          filteredData = data.filter((product) =>
+            selectedCategories.includes(product.category)
+          );
         }
-        dispatch(setFilteredProducts(data));
+      
+        // sort by selected option
+        switch (e.target.value) {
+          case "0":
+            filteredData.sort((a, b) => (Number(a.price) > Number(b.price) ? 1 : -1));
+            break;
+          case "1":
+            filteredData.sort((a, b) => (Number(a.price) < Number(b.price) ? 1 : -1));
+            break;
+          case "2":
+            filteredData.sort((a, b) => (Number(a.rating.rate) < Number(b.rating.rate) ? 1 : -1));
+            break;
+          default:
+            break;
+        }
+      
+        dispatch(setFilteredProducts(filteredData));
     }
 
     const categoriesHandle = (e) => {
-        setSortBy('')
-        setSelectedCategories([...e.target.value])
-        const length = [...e.target.value].length
-        let data = [...allProducts]
-        if(length>0){
-            data = data.filter((product) => [...e.target.value].includes(product.category))
-        }
-        dispatch(setFilteredProducts(data));
+        setSelectedCategories([...e.target.value]);
+    const selectedCategories = [...e.target.value];
+    let filteredProducts = allProducts;
+    if(selectedCategories.length > 0){
+        filteredProducts = filteredProducts.filter((product) => selectedCategories.includes(product.category));
+    }
+
+    // Apply sort by price/rating filter
+    let sortedProducts = [...filteredProducts]; // create a new copy of the array
+     switch(sortBy){
+  case '0': sortedProducts.sort((a,b) => Number(a.price)>Number(b.price)?1:-1);break;
+  case '1' : sortedProducts.sort((a,b) => Number(a.price)<Number(b.price)?1:-1);break;
+  case '2': sortedProducts.sort((a,b) => Number(a.rating.rate)<Number(b.rating.rate)?1:-1);break;
+}
+
+dispatch(setFilteredProducts(sortedProducts));
+        // setSortBy('')
+        // setSelectedCategories([...e.target.value])
+        // const length = [...e.target.value].length
+        // let data = [...allProducts]
+        // if(length>0){
+        //     data = data.filter((product) => [...e.target.value].includes(product.category))
+        // }
+        // dispatch(setFilteredProducts(data));
     }
   return (
     <Box padding={2} width="100%" rowGap={5}>
